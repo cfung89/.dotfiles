@@ -249,6 +249,7 @@ alias ll='ls -la'
 alias cl='clear'
 alias vim='nvim'
 alias tree='tree -I node_modules'
+alias sl='sl -e'
 
 # Reload
 alias rel='source ~/.config/bashrc'
