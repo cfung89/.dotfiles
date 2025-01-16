@@ -29,6 +29,10 @@ fi
 # My config
 source ~/.bashrc
 export VIMINIT="source ~/.config/nvim/init.lua"
-#set viminfo+=n~/.config/vim/viminfo
+# set viminfo+=n~/.config/vim/viminfo
 
 export PATH=~/.npm-global/bin:$PATH
+
+if [ "$TERM_PROGRAM" != tmux ]; then
+    cd ~
+fi

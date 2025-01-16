@@ -236,10 +236,8 @@ alias 'cd..'='cd_up'                                # can not name function 'cd.
 
 #unset env
 
-
-#alias ureload='xrdb -merge ~/.config/X11/Xresources'
-
-
+# alias ureload='xrdb -merge ~/.config/X11/Xresources'
+# alias xrel='xrdb -merge ~/.config/X11/Xresources'
 
 if ! xset q &>/dev/null; then
 	startx
@@ -254,7 +252,6 @@ alias tree='tree -I node_modules'
 
 # Reload
 alias rel='source ~/.config/bashrc'
-alias xrel='xrdb -merge ~/.config/X11/Xresources'
 alias trel='tmux source ~/.config/tmux/tmux.conf'
 
 # Scripts

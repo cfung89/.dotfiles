@@ -1,10 +1,14 @@
 # General
 gtk-titlebar = false
+shell-integration-features = no-cursor,sudo,no-title
 
 # Styles
+font-family = "Hack Nerd Font"
 theme = rose-pine-moon
 font-size = 18
-font-feature = -liga
+font-feature = -calt -dlig -liga
+adjust-cell-height = 5
+cursor-opacity = 1
 adjust-cursor-thickness = 20
 
 # Keybinds
