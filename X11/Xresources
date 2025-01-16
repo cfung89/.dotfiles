@@ -1,5 +1,6 @@
-! Colours
+! URXVT terminal configuration
 
+! Colours
 URxvt.dynamicColors: on
 
 ! Colours 8-15 are usually brighter
@@ -111,14 +112,14 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
 ! URLs
-! URxvt.urlLauncher: google-chrome-stable
-URxvt.urlLauncher: firefox
+! URxvt.urlLauncher: firefox
+URxvt.urlLauncher: google-chrome-stable
 URxvt.matcher.button: 1
 
 URxvt.keysym.M-l: perl:matcher:select-next
-! URxvt.url-select.launcher: google-chrome-stable
-URxvt.url-select.launcher: firefox
+URxvt.url-select.launcher: google-chrome-stable
 URxvt.url-select.underline: true
+! URxvt.url-select.launcher: firefox
 
 ! Fullscreen
 URxvt.keysym.F11: perl:fullscreen:switch

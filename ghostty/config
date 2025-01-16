@@ -1,0 +1,11 @@
+# General
+gtk-titlebar = false
+
+# Styles
+theme = rose-pine-moon
+font-size = 18
+font-feature = -liga
+adjust-cursor-thickness = 20
+
+# Keybinds
+keybind = alt+r=reload_config
