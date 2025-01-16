@@ -28,7 +28,7 @@ fi
 
 # My config
 source ~/.bashrc
-export VIMINIT="source ~/.config/nvim/init.lua"
+# export VIMINIT="source ~/.config/nvim/init.lua"
 # set viminfo+=n~/.config/vim/viminfo
 
 export PATH=~/.npm-global/bin:$PATH
