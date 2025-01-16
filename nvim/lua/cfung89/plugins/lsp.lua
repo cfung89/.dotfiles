@@ -56,9 +56,15 @@ return {
 						["<C-o>"] = cmp.mapping.complete(),
 					}),
 					snippet = {
+						-- REQUIRED - must specify a snippet engine
 						expand = function(args)
 							require("luasnip").lsp_expand(args.body)
+							-- vim.snippet.expand(args.body)
 						end,
+					},
+					window = {
+						completion = cmp.config.window.bordered(),
+						documentation = cmp.config.window.bordered(),
 					},
 					sources = cmp.config.sources({
 						{ name = "nvim_lsp" },
