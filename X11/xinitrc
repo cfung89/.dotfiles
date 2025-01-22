@@ -36,4 +36,6 @@ xrandr -s 2048x1152
 
 [[ -f ~/.config/X11/Xresources ]] && xrdb -merge ~/.config/X11/Xresources
 
+numlockx &
+
 exec i3
