@@ -73,22 +73,7 @@ return {
 		})
 
 		-- Mason
-		require("mason").setup({
-			lazy = false,
-			config = true,
-			opts = {
-				ensure_installed = {
-					"goimports",
-					"gopls",
-					"jdtls",
-					"prettier",
-					"pyright",
-					"stylua",
-					"typescript-language-server",
-				},
-			},
-		})
-
+		require("mason").setup({})
 		require("mason-lspconfig").setup({})
 
 		require("mason-lspconfig").setup_handlers({
