@@ -10,7 +10,7 @@ Type the corresponding number:
 
 Enter a selection (default=1): " distro
 
-git clone https://github.com/cfung89/.dotfiles.git $HOME/temp/.config
+git clone https://github.com/cfung89/.dotfiles.git $HOME/.config
 
 if [[ $distro == 1 || $distro == "" ]] ; then
     echo "Installing packages with APT"
@@ -40,11 +40,15 @@ else
 fi
 
 echo "Installing tmux plugins"
-cd $HOME/temp/.config/tmux
+cd $HOME/.config/tmux
 mkdir plugins
-git clone https://github.com/tmux-plugins/tpm $HOME/temp/.config/tmux/plugins/tpm
-git clone -b v2.1.2 https://github.com/catppuccin/tmux.git $HOME/temp/.config/tmux/plugins/tmux
+git clone https://github.com/tmux-plugins/tpm $HOME/.config/tmux/plugins/tpm
+git clone -b v2.1.2 https://github.com/catppuccin/tmux.git $HOME/.config/tmux/plugins/tmux
 echo "You can now reload tmux plugins with Prefix + Shift + I
 "
+
+cp ~/.config/bashrc ~/.bashrc
+cp ~/.config/profile ~/.bash_profile
+# cp ~/.config/X11/xinitrc ~/.xinitrc
 
 echo "Installation complete"
