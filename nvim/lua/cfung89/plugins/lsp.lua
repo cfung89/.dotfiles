@@ -1,5 +1,13 @@
 return {
 	"neovim/nvim-lspconfig",
+	-- For clangd setup on arm - https://github.com/mason-org/mason-registry/issues/5800#issuecomment-2156640019
+	-- opts = {
+	-- 	servers = {
+	-- 		clangd = {
+	-- 			mason = false,
+	-- 		},
+	-- 	},
+	-- },
 
 	branch = "master",
 
