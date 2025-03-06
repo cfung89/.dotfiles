@@ -26,7 +26,8 @@ vim.keymap.set("v", "<leader>x", ":lua<CR>")
 -- Terminal
 vim.keymap.set("t", "<C-[><C-[>", "<c-\\><c-n>")
 vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>Floaterminal<CR>")
-vim.keymap.set({ "n", "t" }, "<leader>ts", "<cmd>SmallTerminal<CR>")
+vim.keymap.set({ "n", "t" }, "<leader>td", "<cmd>DownTerminal<CR>")
+vim.keymap.set({ "n", "t" }, "<leader>ts", "<cmd>SideTerminal<CR>")
 
 -- General plugins
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
