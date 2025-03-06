@@ -1,13 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	-- For clangd setup on arm - https://github.com/mason-org/mason-registry/issues/5800#issuecomment-2156640019
-	-- opts = {
-	-- 	servers = {
-	-- 		clangd = {
-	-- 			mason = false,
-	-- 		},
-	-- 	},
-	-- },
+	-- For clangd setup on arm - https://github.com/mason-org/mason-registry/issues/5800#issuecomment-2156734203
 
 	branch = "master",
 
@@ -20,6 +13,16 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
+		{
+			"folke/lazydev.nvim", -- LSP for vim
+			ft = "lua",  -- only load on lua files
+			opts = {
+				library = {
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 	},
 
 	config = function()
@@ -31,7 +34,6 @@ return {
 				expand = function(args)
 					-- REQUIRED - must specify a snippet engine
 					vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
-					-- require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			window = {
@@ -42,13 +44,11 @@ return {
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<C-o>"] = cmp.mapping.abort(),
-				-- ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-				-- ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-q>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				-- { name = "luasnip" },
 			}, {
 				{ name = "buffer" },
 			}),
@@ -61,58 +61,47 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			desc = "LSP keybindings",
 			callback = function(event)
-				local opts = { buffer = event.buf }
-				vim.keymap.set("n", "gd", function()
-					vim.lsp.buf.definition()
-				end, opts)
-				vim.keymap.set("n", "<leader>vws", function()
-					vim.lsp.buf.workspace_symbol()
-				end, opts)
-				vim.keymap.set("n", "<leader>d", function()
-					vim.diagnostic.open_float()
-				end, opts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.goto_next()
-				end, opts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.goto_prev()
-				end, opts)
+				local map = function(keys, func, desc)
+					local opts = { buffer = event.buf, desc = "LSP: " .. desc }
+					vim.keymap.set("n", keys, func, opts)
+				end
+				local builtin = require("telescope.builtin")
+
+				map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
+				map("gr", builtin.lsp_references, "[G]oto [R]eferences")
+				map("<leader>ds", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+				map("<leader>D", builtin.lsp_type_definitions, "Type [D]efinition")
+				map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
+				map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				map("<leader>d", function() vim.diagnostic.open_float() end, "Open Diagnostic Window")
+				map("]d", function() vim.diagnostic.goto_next() end, "Goto Next Diagnostic")
+				map("[d", function() vim.diagnostic.goto_prev() end, "Goto Previous Diagnostic")
 			end,
 		})
 
-		-- Mason
-		require("mason").setup({})
-		-- https://github.com/williamboman/mason.nvim/issues/1881
-		require("mason-lspconfig").setup({})
-
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				require("lspconfig")[server_name].setup({})
-			end,
-
-			-- Dedicated handlers for specific servers below
-			-- Python environment
-			-- ["pyright"] = function() end,
-
-			-- local util = require("lspconfig/util")
-			-- local path = util.path
-			-- require("lspconfig").pyright.setup({
-			-- 	on_attach = on_attach,
-			-- 	capabilities = capabilities,
-			-- 	before_init = function(_, config)
-			-- 		default_venv_path = path.join(vim.env.HOME, ".venv", "bin", "python")
-			-- 		config.settings.python.pythonPath = default_venv_path
-			-- 	end,
-			-- })
-		})
-
-		-- VIM DIAGNOSTICS SETUP
+		-- Vim diagnostics setup
 		vim.diagnostic.config({
 			virtual_text = false,
 			signs = true,
 			underline = true,
 			update_in_insert = false,
 			severity_sort = false,
+		})
+
+		-- Mason
+		require("mason").setup({})
+		-- https://github.com/williamboman/mason.nvim/issues/1881
+
+		require("mason-lspconfig").setup {
+			ensure_installed = {},
+			automatic_installation = false,
+		}
+		require("mason-lspconfig").setup_handlers({
+			function(server_name)
+				require("lspconfig")[server_name].setup({})
+			end,
 		})
 	end,
 }
