@@ -17,3 +17,16 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- Find and replace
 vim.keymap.set("n", "<leader>cc", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
+
+-- Execute
+vim.keymap.set("n", "<leader>xx", "<cmd>source %<CR>") -- execute file
+vim.keymap.set("n", "<leader>xl", ":.lua<CR>")         -- execute current line
+vim.keymap.set("v", "<leader>x", ":lua<CR>")
+
+-- Terminal
+vim.keymap.set("t", "<C-[><C-[>", "<c-\\><c-n>")
+vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>Floaterminal<CR>")
+vim.keymap.set({ "n", "t" }, "<leader>ts", "<cmd>SmallTerminal<CR>")
+
+-- General plugins
+vim.keymap.set("n", "-", "<cmd>Oil<CR>")
