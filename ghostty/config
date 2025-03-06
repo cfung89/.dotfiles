@@ -9,7 +9,7 @@ font-size = 18
 font-feature = -calt -dlig -liga
 adjust-cell-height = 5
 cursor-opacity = 1
-adjust-cursor-thickness = 20
 
 # Keybinds
-keybind = alt+r=reload_config
+keybind = alt+g>f=toggle_fullscreen
+keybind = alt+g>r=reload_config
