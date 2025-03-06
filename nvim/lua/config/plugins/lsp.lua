@@ -82,6 +82,7 @@ return {
 
 		-- Mason
 		require("mason").setup({})
+		-- https://github.com/williamboman/mason.nvim/issues/1881
 		require("mason-lspconfig").setup({})
 
 		require("mason-lspconfig").setup_handlers({
