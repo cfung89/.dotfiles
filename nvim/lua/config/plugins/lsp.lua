@@ -75,9 +75,9 @@ return {
 				map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-				map("<leader>d", function() vim.diagnostic.open_float() end, "Open Diagnostic Window")
-				map("]d", function() vim.diagnostic.goto_next() end, "Goto Next Diagnostic")
-				map("[d", function() vim.diagnostic.goto_prev() end, "Goto Previous Diagnostic")
+				map("<leader>dd", function() vim.diagnostic.open_float() end, "Open Diagnostic Window")
+				map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Goto Next Diagnostic")
+				map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Goto Previous Diagnostic")
 			end,
 		})
 

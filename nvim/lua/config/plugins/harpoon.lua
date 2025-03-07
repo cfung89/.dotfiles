@@ -8,7 +8,6 @@ return {
 
 			-- REQUIRED
 			harpoon:setup()
-			-- REQUIRED
 
 			vim.keymap.set("n", "<leader>a", function()
 				harpoon:list():add()
@@ -19,9 +18,6 @@ return {
 			vim.keymap.set("n", "<leader>r", function()
 				harpoon:list():remove()
 			end)
-			-- vim.keymap.set("n", "<leader>cl", function()
-			-- 	harpoon:list():clear()
-			-- end)
 
 			vim.keymap.set("n", "<leader>h", function()
 				harpoon:list():select(1)
