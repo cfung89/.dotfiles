@@ -1,0 +1,11 @@
+[[sessions]]
+name = "frontend"
+
+  [[sessions.windows]]
+  name = "nvim"
+  default = true
+  command = "nvim ."
+
+  [[sessions.windows]]
+  name = "test"
+  command = "npm run dev"

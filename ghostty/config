@@ -1,6 +1,7 @@
 # General
 gtk-titlebar = false
 shell-integration-features = no-cursor,sudo,no-title
+copy-on-select = clipboard
 
 # Styles
 font-family = "Hack Nerd Font"
