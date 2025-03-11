@@ -237,7 +237,7 @@ bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F
 # keybinding to lock screen
 bindsym $mod+x exec "i3lock -c 000000"
 bindsym $mod+c exec "i3lock -c 000000 && systemctl suspend"
-# bindsym $mod+v exec "i3lock -c 000000 && systemctl hibernate"
+bindsym $mod+p exec "poweroff"
 
 # auto lock the screen
 exec --no-startup-id xautolock -detectsleep -time 5 -locker \"i3lock -c 000000\"
