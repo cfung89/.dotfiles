@@ -243,8 +243,8 @@ keybindings:
   - commands: ['shell-exec C:\Program Files\WSL\wsl.exe']
     bindings: ['alt+enter']
   
-  # Launch Chrome
-  - commands: ['shell-exec chrome']
+  # Launch Brave
+  - commands: ['shell-exec brave']
     bindings: ['alt+b']
 
 
