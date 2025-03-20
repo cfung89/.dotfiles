@@ -1,34 +1,41 @@
-vim.opt.nu = true
-vim.opt.relativenumber = true
-vim.opt.encoding = "utf-8"
+local set = vim.opt
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
-vim.opt.list = true -- show tab characters and trailing whitespace
+set.nu = true
+set.relativenumber = true
+set.encoding = "utf-8"
 
-vim.opt.wrap = true
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
+set.expandtab = true
+set.smartindent = true
+set.autoindent = true
+set.list = true -- show tab characters and trailing whitespace
 
-vim.opt.termguicolors = true
+set.wrap = true
 
-vim.opt.mouse = ""
+set.termguicolors = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.ignorecase = true -- ignore case when searching
-vim.opt.smartcase = true -- unless capital letter in search
+set.mouse = ""
 
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
+set.hlsearch = false
+set.incsearch = true
+set.ignorecase = true -- ignore case when searching
+set.smartcase = true  -- unless capital letter in search
 
-vim.opt.updatetime = 50
-vim.opt.colorcolumn = "80"
+set.scrolloff = 8
+set.sidescrolloff = 8
 
-vim.opt.swapfile = true
-vim.opt.termguicolors = true -- for bufferline
+set.updatetime = 50
+set.colorcolumn = "80"
+
+set.swapfile = true
+set.termguicolors = true -- for bufferline
+
+
+set.signcolumn = "yes:1"
+
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 vim.api.nvim_create_user_command("W", function()
 	vim.cmd("w")
