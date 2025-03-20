@@ -4,6 +4,11 @@ return {
 		tag = "0.1.6",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
+			-- extremely slow
+			require("telescope").setup {
+				defaults = { file_ignore_patterns = { "node%_modules/.*", "%.git/.*" }, },
+			}
+
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", function()
 				builtin.find_files {
