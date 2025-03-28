@@ -21,16 +21,15 @@ local insert = function(input, row, col)
 	vim.api.nvim_buf_set_text(0, row, col, row, col, { input })
 end
 
----@param input string
----@return nil
-local surround = function(input)
+local surround = function()
+	local char = string.char(vim.fn.getchar())
 	local selection = getVisual()
 	if selection == nil then
 		vim.print("error")
 		return
 	end
 	local row0, col0, row1, col1 = unpack(selection)
-	switch(input, {
+	switch(char, {
 		["("] = function()
 			insert(") ", row1 - 1, col1)
 			insert(" (", row0 - 1, col0 - 1)
@@ -55,7 +54,8 @@ local surround = function(input)
 			insert("}", row1 - 1, col1)
 			insert("{", row0 - 1, col0 - 1)
 		end,
-		default = function()
+		["S"] = function()
+			local input = vim.fn.input("Enter input: ")
 			if string.sub(input, 1, 1) == "<" and string.sub(input, -1) == ">" then
 				insert(string.sub(input, 1, 1) .. "/" .. string.sub(input, 2), row1 - 1, col1)
 				insert(input, row0 - 1, col0 - 1)
@@ -63,24 +63,13 @@ local surround = function(input)
 				insert(input, row1 - 1, col1)
 				insert(input, row0 - 1, col0 - 1)
 			end
+		end,
+		default = function()
+			insert(char, row1 - 1, col1)
+			insert(char, row0 - 1, col0 - 1)
 		end
 	})
 end
 
-vim.api.nvim_create_user_command("Surround",
-	function()
-		local input = vim.fn.input("Enter input: ")
-		surround(input)
-	end,
-	{ desc = "Surround selected text by the given input" })
-
+vim.api.nvim_create_user_command("Surround", surround, { desc = "Surround selected text by the given input" })
 vim.keymap.set("v", "S", "<cmd>Surround<CR>")
-vim.keymap.set("v", "S(", function() surround("(") end, { desc = "Surround selected text by '(  )'" })
-vim.keymap.set("v", "S)", function() surround(")") end, { desc = "Surround selected text by '()'" })
-vim.keymap.set("v", "S[", function() surround("[") end, { desc = "Surround selected text by '[  ]'" })
-vim.keymap.set("v", "S]", function() surround("]") end, { desc = "Surround selected text by '[]'" })
-vim.keymap.set("v", "S{", function() surround("{") end, { desc = "Surround selected text by '{  }'" })
-vim.keymap.set("v", "S}", function() surround("}") end, { desc = "Surround selected text by '{}'" })
-vim.keymap.set("v", "S`", function() surround("`") end, { desc = "Surround selected text by '``'" })
-vim.keymap.set("v", "S'", function() surround("'") end, { desc = "Surround selected text by ''''" })
-vim.keymap.set("v", "S\"", function() surround("\"") end, { desc = "Surround selected text by '\"\"'" })
