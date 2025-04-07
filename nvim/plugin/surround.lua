@@ -7,7 +7,7 @@ local function switch(x, cases)
 end
 
 ---@return integer[]
-local getVisual = function()
+local get_visual = function()
 	local _, row0, col0 = unpack(vim.fn.getpos('v'))
 	local _, row1, col1 = unpack(vim.fn.getpos('.'))
 	return { row0, col0, row1, col1 }
@@ -23,36 +23,48 @@ end
 
 local surround = function()
 	local char = string.char(vim.fn.getchar())
-	local selection = getVisual()
+	local selection = get_visual()
 	if selection == nil then
 		vim.print("error")
 		return
 	end
 	local row0, col0, row1, col1 = unpack(selection)
+	if row0 > row1 or (row0 == row1 and col0 > col1) then
+		row0, row1 = row1, row0
+		col0, col1 = col1, col0
+	end
 	switch(char, {
 		["("] = function()
-			insert(") ", row1 - 1, col1)
-			insert(" (", row0 - 1, col0 - 1)
+			insert(" )", row1 - 1, col1)
+			insert("( ", row0 - 1, col0 - 1)
 		end,
 		[")"] = function()
 			insert(")", row1 - 1, col1)
 			insert("(", row0 - 1, col0 - 1)
 		end,
 		["["] = function()
-			insert("] ", row1 - 1, col1)
-			insert(" [", row0 - 1, col0 - 1)
+			insert(" ]", row1 - 1, col1)
+			insert("[ ", row0 - 1, col0 - 1)
 		end,
 		["]"] = function()
 			insert("]", row1 - 1, col1)
 			insert("[", row0 - 1, col0 - 1)
 		end,
 		["{"] = function()
-			insert("} ", row1 - 1, col1)
-			insert(" {", row0 - 1, col0 - 1)
+			insert(" }", row1 - 1, col1)
+			insert("{ ", row0 - 1, col0 - 1)
 		end,
 		["}"] = function()
 			insert("}", row1 - 1, col1)
 			insert("{", row0 - 1, col0 - 1)
+		end,
+		["<"] = function()
+			insert(" >", row1 - 1, col1)
+			insert("< ", row0 - 1, col0 - 1)
+		end,
+		[">"] = function()
+			insert(">", row1 - 1, col1)
+			insert("<", row0 - 1, col0 - 1)
 		end,
 		["S"] = function()
 			local input = vim.fn.input("Enter input: ")

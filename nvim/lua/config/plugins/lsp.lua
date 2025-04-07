@@ -6,7 +6,10 @@ return {
 
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/nvim-cmp",
+		{
+			"hrsh7th/nvim-cmp",
+			commit = "1e1900b",
+		},
 		"L3MON4D3/LuaSnip",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
