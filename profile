@@ -26,13 +26,20 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+M2_HOME='/opt/apache-maven-3.9.9'
+PATH="$M2_HOME/bin:$PATH"
+export PATH
+
 # My config
 source ~/.bashrc
 # export VIMINIT="source ~/.config/nvim/init.lua"
-# set viminfo+=n~/.config/vim/viminfo
+#set viminfo+=n~/.config/vim/viminfo
 
 export PATH=~/.npm-global/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/.config/go
 
 if [ "$TERM_PROGRAM" != tmux ]; then
     cd ~
 fi
+

@@ -255,10 +255,10 @@ alias trel='tmux source ~/.config/tmux/tmux.conf'
 
 # Scripts
 alias i3-save-layout='~/.config/scripts/i3-save-layout.sh'
+alias cgit='~/.config/scripts/cgit.sh'
 
 # fzf
 source ~/.config/fzf/key-bindings.bash
 source ~/.config/fzf/completion.bash
 
 bind '"\C-f":"tms\n"'
-# bind '"\C-f":"cd $(find -L ~ -type d -print | fzf -i) && tmux\n"'
