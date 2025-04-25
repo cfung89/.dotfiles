@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>q", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>q", vim.cmd.Ex)
 
 -- Yank
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -29,5 +29,6 @@ vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>Floaterminal<CR>")
 vim.keymap.set({ "n", "t" }, "<leader>td", "<cmd>DownTerminal<CR>")
 vim.keymap.set({ "n", "t" }, "<leader>ts", "<cmd>SideTerminal<CR>")
 
--- General plugins
+-- Oil plugin
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+vim.keymap.set("n", "<leader>q", "<cmd>Oil<CR>")
