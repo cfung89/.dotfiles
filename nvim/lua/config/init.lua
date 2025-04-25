@@ -4,10 +4,8 @@ require("config.lazy_init")
 
 require('lazy').setup({
 	spec = 'config.plugins',
-	checker = {
-		enabled = true,
-		notify = true
-	}
+	change_detection = { notify = false },
+	checker = { enabled = true, notify = false }
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {
