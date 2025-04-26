@@ -22,7 +22,12 @@ local insert = function(input, row, col)
 end
 
 local surround = function()
-	local char = string.char(vim.fn.getchar())
+	local c = vim.fn.getchar()
+	if type(c) ~= "number" then
+		vim.print("Invalid input character.")
+		return
+	end
+	local char = string.char(c)
 	local selection = get_visual()
 	if selection == nil then
 		vim.print("error")

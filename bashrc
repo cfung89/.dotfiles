@@ -257,8 +257,8 @@ alias trel='tmux source ~/.config/tmux/tmux.conf'
 alias i3-save-layout='~/.config/scripts/i3-save-layout.sh'
 alias cgit='~/.config/scripts/cgit.sh'
 
+bind '"\C-f":"tms\n"'
+
 # fzf
 source ~/.config/fzf/key-bindings.bash
 source ~/.config/fzf/completion.bash
-
-bind '"\C-f":"tms\n"'

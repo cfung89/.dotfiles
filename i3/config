@@ -251,5 +251,6 @@ exec --no-startup-id pulseaudio
 
 # keybinding for flameshot (screenshot)
 bindsym $mod+Shift+S exec --no-startup-id flameshot gui -c -p ~/Documents/Screenshots
+bindsym $mod+m exec --no-startup-id ~/.config/scripts/dmenu_cmd.sh
 
 for_window [class="^.*"] border pixel 3
