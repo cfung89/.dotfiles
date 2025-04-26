@@ -248,6 +248,7 @@ fi
 alias ll='ls -la'
 alias cl='clear'
 alias tree='tree -I node_modules'
+alias cf='cd $(find . -type d | fzf)'
 
 # Reload
 alias rel='source ~/.config/bashrc'
@@ -258,6 +259,7 @@ alias i3-save-layout='~/.config/scripts/i3-save-layout.sh'
 alias cgit='~/.config/scripts/cgit.sh'
 
 bind '"\C-f":"tms\n"'
+bind '"\C-g":"cd $(find ~ -type d | fzf)\n"'
 
 # fzf
 source ~/.config/fzf/key-bindings.bash
