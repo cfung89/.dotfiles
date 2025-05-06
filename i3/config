@@ -175,50 +175,59 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+# back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
+# i3-gaps
+for_window [class="^.*"] border pixel 3
+# gaps inner 6
+# gaps outer 0
+# gaps horizontal 2
+# smart_borders on
+# smart_borders no_gaps
+# smart_gaps on
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
+    colors {
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
 
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
-  }
-  separator_symbol " | "
-  tray_padding 8
-  position top
-  font pango:monospace 10
-  status_command ~/.config/i3status/.venv/bin/python ~/.config/i3status/status.py
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
+    separator_symbol " | "
+        tray_padding 8
+        position top
+        font pango:monospace 10
+        status_command ~/.config/i3status/.venv/bin/python ~/.config/i3status/status.py
 }
 
 # Dracula i3 config
@@ -244,13 +253,14 @@ exec --no-startup-id xautolock -detectsleep -time 5 -locker \"i3lock -c 000000\"
 
 exec --no-startup-id feh --no-fehbg --bg-scale --randomize ~/Documents/wallpapers/*
 
-#run pulseaudio
+# run pulseaudio
 exec --no-startup-id pulseaudio
+
+# run picom
+# exec --no-startup-id picom
 
 # exec --no-startup-id x0vncserver -localhost -SecurityTypes none
 
 # keybinding for flameshot (screenshot)
 bindsym $mod+Shift+S exec --no-startup-id flameshot gui -c -p ~/Documents/Screenshots
 bindsym $mod+m exec --no-startup-id ~/.config/scripts/dmenu_cmd.sh
-
-for_window [class="^.*"] border pixel 3
