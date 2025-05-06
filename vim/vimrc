@@ -150,4 +150,9 @@ set showmatch	" Shows matching brackets
 set ruler	" Always shows location in file
 set smarttab	" Autotabs for certain code
 set shiftwidth=4
-colorscheme darkblue
+
+set textwidth=0
+set wrapmargin=0
+set wrap
+set linebreak " breaks by word rather than character
+set columns=80
