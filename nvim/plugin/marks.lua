@@ -1,5 +1,11 @@
 vim.keymap.set("n", "m", function()
-	local char = string.char(vim.fn.getchar())
+	local get = vim.fn.getchar()
+	local char
+	if type(get) == "number" then
+		char = string.char(get)
+	else
+		return
+	end
 	local buf = vim.api.nvim_get_current_buf()
 	local lnum = vim.fn.line('.')
 	vim.api.nvim_buf_set_mark(buf, char, lnum, 1, {})
@@ -7,7 +13,13 @@ vim.keymap.set("n", "m", function()
 end, { desc = "Create mark." })
 
 vim.keymap.set("n", "dm", function()
-	local char = string.char(vim.fn.getchar())
+	local get = vim.fn.getchar()
+	local char
+	if type(get) == "number" then
+		char = string.char(get)
+	else
+		return
+	end
 	local buf = vim.api.nvim_get_current_buf()
 	vim.api.nvim_buf_del_mark(buf, char)
 	vim.print("Deleted mark '" .. char .. "'")
