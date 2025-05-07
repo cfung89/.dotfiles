@@ -20,7 +20,7 @@ vim.keymap.set("n", "<leader>cc", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
 -- Execute
 vim.keymap.set("n", "<leader>xx", "<cmd>source %<CR>") -- execute file
-vim.keymap.set("n", "<leader>xl", ":.lua<CR>")         -- execute current line
+vim.keymap.set("n", "<leader>xl", ":.lua<CR>") -- execute current line
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
 -- Terminal
