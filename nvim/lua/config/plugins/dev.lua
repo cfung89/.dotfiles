@@ -7,5 +7,8 @@ return {
 	},
 	{
 		dir = "~/Github/nvim_plugins/surf.nvim",
+		config = function()
+			require("surf").setup()
+		end,
 	},
 }
