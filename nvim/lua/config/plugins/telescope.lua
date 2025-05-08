@@ -50,7 +50,8 @@ return {
 				builtin.grep_string({ search = word })
 			end)
 
-			require("nvim.lua.config.telescope.multigrep").setup()
+			require("config.telescope.multigrep").setup()
+			-- require("nvim.lua.config.telescope.multigrep").setup()
 		end,
 	},
 }
