@@ -16,10 +16,20 @@ return {
 			vim.keymap.set("n", "<leader>fd", function()
 				builtin.find_files({ hidden = true })
 			end)
+			-- vim.keymap.set("n", "<leader>fe", function()
+			-- 	builtin.fold[({ hidden = true })
+			-- end)
 			vim.keymap.set("n", "<leader>fp", function()
 				builtin.live_grep({ hidden = true })
 			end)
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags)
+			vim.keymap.set("n", "<leader>fn", function()
+				builtin.find_files({
+					cwd = os.getenv("HOME") .. "/Documents/notes",
+					hidden = true,
+					no_ignore = false,
+				})
+			end)
 			vim.keymap.set("n", "<leader>fc", function()
 				builtin.find_files({
 					cwd = vim.fn.stdpath("config"),

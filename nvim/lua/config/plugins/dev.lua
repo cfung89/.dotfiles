@@ -8,7 +8,12 @@ return {
 	{
 		dir = "~/Github/nvim_plugins/surf.nvim",
 		config = function()
-			require("surf").setup()
+			require("surf").setup({
+				default_engine = "DuckDuckGo",
+				engines = {
+					Elixir = { bang = "!ex", url = "https://hexdocs.pm/elixir/search.html?q=%s" },
+				}
+			})
 		end,
 	},
 }
