@@ -37,6 +37,8 @@ return {
 					no_ignore = false, -- do not show gitignore
 				})
 			end)
+			vim.keymap.set("n", "<leader>fm", builtin.man_pages)
+
 			-- grep_string
 			vim.keymap.set("n", "<leader>fs", function()
 				builtin.grep_string({ search = vim.fn.input("Grep > ") })
