@@ -61,6 +61,15 @@ return {
 			-- },
 		})
 
+		-- all window borders (conflicts with telescope)
+		-- vim.o.winborder = 'rounded'
+
+		-- hover border
+		vim.keymap.set('n', 'K', function()
+			vim.lsp.buf.hover({ border = 'rounded' })
+		end)
+
+
 		-- LSP Keybind Setup
 		vim.api.nvim_create_autocmd("LspAttach", {
 			desc = "LSP keybindings",
