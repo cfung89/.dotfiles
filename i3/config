@@ -249,7 +249,7 @@ bindsym $mod+c exec "i3lock -c 000000 && systemctl suspend"
 bindsym $mod+p exec "poweroff"
 
 # auto lock the screen
-exec --no-startup-id xautolock -detectsleep -time 5 -locker \"i3lock -c 000000\"
+# exec --no-startup-id xautolock -detectsleep -time 5 -locker \"i3lock -c 000000\"
 
 exec --no-startup-id feh --no-fehbg --bg-scale --randomize ~/Documents/wallpapers/*
 

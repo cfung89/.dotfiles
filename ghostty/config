@@ -5,7 +5,7 @@ shell-integration-features = no-cursor,sudo,no-title
 
 # Styles
 font-family = "Hack Nerd Font"
-theme = rose-pine-moon
+theme = Rose Pine Moon
 font-size = 18
 font-feature = -calt -dlig -liga
 adjust-cell-height = 5
