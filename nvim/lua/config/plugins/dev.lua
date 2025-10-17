@@ -19,4 +19,10 @@ return {
 			})
 		end,
 	},
+	{
+		dir = "~/Github/nvim_plugins/umple.nvim",
+		config = function()
+			require("umple").setup({})
+		end,
+	},
 }
